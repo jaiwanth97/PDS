@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader, TensorDataset
 import os, json, time
 
 import importlib.util, sys as _sys
-_spec = importlib.util.spec_from_file_location("mtl_model", "3_mtl_model.py")
+_spec = importlib.util.spec_from_file_location("mtl_model", "mtl.py")
 _mod  = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_mod)
 MTLPricingModel = _mod.MTLPricingModel
@@ -64,7 +64,7 @@ model     = MTLPricingModel(input_dim=INPUT_DIM, dropout_rate=DROPOUT).to(device
 criterion = MTLLoss(w_volatility=W_VOLATILITY, w_trust=W_TRUST, w_collusion=W_COLLUSION)
 optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-                optimizer, mode='min', factor=0.5, patience=5, verbose=False)
+                optimizer, mode='min', factor=0.5, patience=5)
 
 total_params = sum(p.numel() for p in model.parameters())
 print(f"   Total parameters: {total_params:,}")

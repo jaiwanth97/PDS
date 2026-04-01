@@ -1,0 +1,74 @@
+{
+  "RandomForest": {
+    "volatility": {
+      "MAE": 0.0193,
+      "RMSE": 0.0242,
+      "R2": 0.9673
+    },
+    "trust": {
+      "MAE": 0.1443,
+      "RMSE": 0.1829,
+      "R2": 0.8395
+    },
+    "collusion": {
+      "F1": 0.458,
+      "AUC": 0.8119,
+      "Precision": 0.808,
+      "Recall": 0.3196
+    }
+  },
+  "XGBoost": {
+    "volatility": {
+      "MAE": 0.019,
+      "RMSE": 0.0236,
+      "R2": 0.969
+    },
+    "trust": {
+      "MAE": 0.1402,
+      "RMSE": 0.1755,
+      "R2": 0.8523
+    },
+    "collusion": {
+      "F1": 0.42,
+      "AUC": 0.7957,
+      "Precision": 0.5707,
+      "Recall": 0.3323
+    }
+  },
+  "LinearLogistic": {
+    "volatility": {
+      "MAE": 0.0315,
+      "RMSE": 0.0395,
+      "R2": 0.9132
+    },
+    "trust": {
+      "MAE": 0.1521,
+      "RMSE": 0.1938,
+      "R2": 0.8199
+    },
+    "collusion": {
+      "F1": 0.41,
+      "AUC": 0.814,
+      "Precision": 0.6049,
+      "Recall": 0.3101
+    }
+  },
+  "MTLModel": {
+    "volatility": {
+      "MAE": 0.0516,
+      "RMSE": 0.0644,
+      "R2": 0.7689
+    },
+    "trust": {
+      "MAE": 0.1586,
+      "RMSE": 0.2009,
+      "R2": 0.8063
+    },
+    "collusion": {
+      "F1": 0.4134,
+      "AUC": 0.8153,
+      "Precision": 0.6074,
+      "Recall": 0.3133
+    }
+  }
+}

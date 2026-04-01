@@ -21,7 +21,7 @@ def load_module(path, name):
     spec.loader.exec_module(mod)
     return mod
 
-mtl             = load_module("3_mtl_model.py", "mtl_model")
+mtl             = load_module("mtl.py", "mtl_model")
 MTLPricingModel = mtl.MTLPricingModel
 
 PROCESSED_DIR   = "processed"
@@ -38,7 +38,7 @@ print(f"   Test set: {X_test.shape[0]} rows")
 
 # ── Load model ────────────────────────────────────────────────────────────────
 print("── Loading model ───────────────────────────────────────")
-checkpoint = torch.load(MODEL_PATH, map_location=device)
+checkpoint = torch.load(MODEL_PATH, map_location=device, weights_only=False)
 model      = MTLPricingModel(input_dim=checkpoint['input_dim']).to(device)
 model.load_state_dict(checkpoint['model_state'])
 model.eval()

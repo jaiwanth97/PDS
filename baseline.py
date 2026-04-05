@@ -78,32 +78,32 @@ results['RandomForest'] = {
 }
 
 # ── Baseline 2: XGBoost ───────────────────────────────────────────────────────
-print("\n── Baseline 2: XGBoost ─────────────────────────────────")
+# print("\n── Baseline 2: XGBoost ─────────────────────────────────")
 
-xgb_vol = XGBRegressor(n_estimators=100, random_state=42,
-                        verbosity=0, eval_metric='rmse')
-xgb_vol.fit(X_train, y_train_vol)
-pv = xgb_vol.predict(X_test)
-print(f"   Volatility done")
+# xgb_vol = XGBRegressor(n_estimators=100, random_state=42,
+#                         verbosity=0, eval_metric='rmse')
+# xgb_vol.fit(X_train, y_train_vol)
+# pv = xgb_vol.predict(X_test)
+# print(f"   Volatility done")
 
-xgb_tru = XGBRegressor(n_estimators=100, random_state=42,
-                        verbosity=0, eval_metric='rmse')
-xgb_tru.fit(X_train, y_train_tru)
-pt = xgb_tru.predict(X_test)
-print(f"   Trust done")
+# xgb_tru = XGBRegressor(n_estimators=100, random_state=42,
+#                         verbosity=0, eval_metric='rmse')
+# xgb_tru.fit(X_train, y_train_tru)
+# pt = xgb_tru.predict(X_test)
+# print(f"   Trust done")
 
-xgb_col = XGBClassifier(n_estimators=100, random_state=42,
-                         verbosity=0, eval_metric='logloss',
-                         use_label_encoder=False)
-xgb_col.fit(X_train, y_train_col)
-pc = xgb_col.predict_proba(X_test)[:,1]
-print(f"   Collusion done")
+# xgb_col = XGBClassifier(n_estimators=100, random_state=42,
+#                          verbosity=0, eval_metric='logloss',
+#                          use_label_encoder=False)
+# xgb_col.fit(X_train, y_train_col)
+# pc = xgb_col.predict_proba(X_test)[:,1]
+# print(f"   Collusion done")
 
-results['XGBoost'] = {
-    'volatility': reg_metrics(y_test_vol, pv),
-    'trust':      reg_metrics(y_test_tru, pt),
-    'collusion':  cls_metrics(y_test_col, pc),
-}
+# results['XGBoost'] = {
+#     'volatility': reg_metrics(y_test_vol, pv),
+#     'trust':      reg_metrics(y_test_tru, pt),
+#     'collusion':  cls_metrics(y_test_col, pc),
+# }
 
 # ── Baseline 3: Linear / Logistic Regression ─────────────────────────────────
 print("\n── Baseline 3: Linear + Logistic Regression ────────────")

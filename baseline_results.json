@@ -1,74 +1,56 @@
 {
   "RandomForest": {
     "volatility": {
-      "MAE": 0.0193,
-      "RMSE": 0.0242,
-      "R2": 0.9673
+      "MAE": 0.0469,
+      "RMSE": 0.0598,
+      "R2": 0.5329
     },
     "trust": {
-      "MAE": 0.1443,
-      "RMSE": 0.1829,
-      "R2": 0.8395
+      "MAE": 0.308,
+      "RMSE": 0.3874,
+      "R2": 0.4915
     },
     "collusion": {
-      "F1": 0.458,
-      "AUC": 0.8119,
-      "Precision": 0.808,
-      "Recall": 0.3196
-    }
-  },
-  "XGBoost": {
-    "volatility": {
-      "MAE": 0.019,
-      "RMSE": 0.0236,
-      "R2": 0.969
-    },
-    "trust": {
-      "MAE": 0.1402,
-      "RMSE": 0.1755,
-      "R2": 0.8523
-    },
-    "collusion": {
-      "F1": 0.42,
-      "AUC": 0.7957,
-      "Precision": 0.5707,
-      "Recall": 0.3323
+      "F1": 0.1704,
+      "AUC": 0.5924,
+      "Precision": 0.4454,
+      "Recall": 0.1054
     }
   },
   "LinearLogistic": {
     "volatility": {
-      "MAE": 0.0315,
-      "RMSE": 0.0395,
-      "R2": 0.9132
+      "MAE": 0.0464,
+      "RMSE": 0.0594,
+      "R2": 0.5402
     },
     "trust": {
-      "MAE": 0.1521,
-      "RMSE": 0.1938,
-      "R2": 0.8199
+      "MAE": 0.3306,
+      "RMSE": 0.41,
+      "R2": 0.4306
     },
     "collusion": {
-      "F1": 0.41,
-      "AUC": 0.814,
-      "Precision": 0.6049,
-      "Recall": 0.3101
+      "F1": 0.1683,
+      "AUC": 0.6351,
+      "Precision": 0.4951,
+      "Recall": 0.1014
     }
   },
   "MTLModel": {
     "volatility": {
-      "MAE": 0.0516,
-      "RMSE": 0.0644,
-      "R2": 0.7689
+      "MAE": 0.0509,
+      "RMSE": 0.0639,
+      "R2": 0.4668
     },
     "trust": {
-      "MAE": 0.1586,
-      "RMSE": 0.2009,
-      "R2": 0.8063
+      "MAE": 0.3407,
+      "RMSE": 0.4249,
+      "R2": 0.3883
     },
     "collusion": {
-      "F1": 0.4134,
-      "AUC": 0.8153,
-      "Precision": 0.6074,
-      "Recall": 0.3133
+      "F1": 0.2022,
+      "AUC": 0.6219,
+      "Precision": 0.4923,
+      "Recall": 0.1272
     }
   }
 }

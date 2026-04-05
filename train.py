@@ -25,16 +25,16 @@ PROCESSED_DIR   = "processed"
 MODEL_SAVE_PATH = "best_model.pt"
 HISTORY_PATH    = "training_history.json"
 
-INPUT_DIM       = 28
-BATCH_SIZE      = 64
-LEARNING_RATE   = 0.001
-MAX_EPOCHS      = 100
-PATIENCE        = 10          # early stopping patience
+INPUT_DIM       = 31
+BATCH_SIZE = 128  # was 64
+LEARNING_RATE = 0.0005  # was 0.001
+PATIENCE      = 15      # was 10
+MAX_EPOCHS    = 150          # early stopping patience
 DROPOUT         = 0.3
 
-W_VOLATILITY    = 0.4
-W_TRUST         = 0.4
-W_COLLUSION     = 0.2
+W_VOLATILITY = 0.25
+W_TRUST      = 0.35
+W_COLLUSION  = 0.40  # bump this up
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
@@ -60,11 +60,11 @@ val_loader    = DataLoader(val_dataset,   batch_size=BATCH_SIZE, shuffle=False)
 # 2. INITIALIZE MODEL, LOSS, OPTIMIZER
 # ─────────────────────────────────────────────────────────────────────────────
 print("\n── Initializing model ──────────────────────────────────")
-model     = MTLPricingModel(input_dim=INPUT_DIM, dropout_rate=DROPOUT).to(device)
-criterion = MTLLoss(w_volatility=W_VOLATILITY, w_trust=W_TRUST, w_collusion=W_COLLUSION)
+model = MTLPricingModel(input_dim=INPUT_DIM).to(device)
+criterion = MTLLoss(w_vol=W_VOLATILITY, w_trust=W_TRUST, w_col=W_COLLUSION)
 optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
-scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-                optimizer, mode='min', factor=0.5, patience=5)
+scheduler = optim.lr_scheduler.CosineAnnealingLR(
+                optimizer, T_max=150, eta_min=1e-5)
 
 total_params = sum(p.numel() for p in model.parameters())
 print(f"   Total parameters: {total_params:,}")
@@ -135,7 +135,7 @@ for epoch in range(1, MAX_EPOCHS + 1):
     avg_val_col   = np.mean(val_cols)
     current_lr    = optimizer.param_groups[0]['lr']
 
-    scheduler.step(avg_val_loss)
+    scheduler.step()
 
     # Log history
     history['train_loss'].append(avg_train_loss)

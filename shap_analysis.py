@@ -289,7 +289,7 @@ np.save(f"{PROCESSED_DIR}/shap_vol.npy",   all_shap_values['vol'])
 np.save(f"{PROCESSED_DIR}/shap_trust.npy", all_shap_values['trust'])
 np.save(f"{PROCESSED_DIR}/shap_col.npy",   all_shap_values['col'])
 
-print(f"\n✅  SHAP analysis complete!")
+print(f"\n SHAP analysis complete!")
 print(f"\nPlots saved:")
 print(f"   plots/shap_feature_importance.png  → Use as Fig 3 in paper")
 print(f"   plots/shap_summary_dots.png        → Use as Fig 4 in paper")
